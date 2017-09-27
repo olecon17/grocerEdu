@@ -1,14 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Counter from './components/counter'
+import CounterButton from './components/counterButton'
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import counter from './reducers/countReducer'
+
+const store = createStore(counter);
 
 export default class App extends React.Component {
   render() {
     return (
+      <Provider store={store}>
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Counter/>
+        <CounterButton/>
       </View>
+        </Provider>
+
     );
   }
 }
